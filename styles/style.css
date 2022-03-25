@@ -24,7 +24,7 @@ body {
     
     --header-height: 80px;
     --shadow: 0px 10px 20px -12px rgba(0,0,0,0.45);
-    --gutter: 30px;
+    /* --gutter: 30px; */
     --footer-height: 25px;
     
     font-family: 'Titillium Web', sans-serif;
@@ -32,7 +32,7 @@ body {
 }
 
 main {
-    height: 90%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -48,9 +48,9 @@ section {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    /* padding-top: var(--gutter); */
+    padding-top: var(--gutter);
     padding-bottom: var(--gutter);
-    /* margin-top: var(--gutter); */
+    margin-top: var(--gutter);
     margin-bottom: var(--gutter);
     border: solid 2px var(--color1);
 }
@@ -63,9 +63,9 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: var(--gutter);
+    /* padding-top: var(--gutter); */
     padding-bottom: var(--gutter);
-    margin-top: var(--gutter);
+    /* margin-top: var(--gutter); */
     margin-bottom: var(--gutter);
     border: solid 2px var(--color1);
 }
@@ -73,6 +73,7 @@ section {
 header {
     display: flex;
     justify-content: flex-end;
+    height: 20vh;
     background-color: var(--color3);
     height: var(--header-height);
     box-shadow: var(--shadow);
@@ -80,7 +81,7 @@ header {
 
 
 h2 {
-    height:20vh;
+    height:5vh;
     font-size: 1.8rem;
     font-weight: bold;
     display: flex;
@@ -115,7 +116,18 @@ footer {
 
 .signup{
     display: flex;
+    margin:15px;
 
+}
+
+#signin{
+    margin-top:15px;
+}
+
+#signup{
+
+    margin-top:15px;
+    
 }
 
 .signin{
@@ -152,6 +164,22 @@ form{
         top: 20px;
     }
 
+    .option-1{
+        display:flex;
+        flex-direction: row;
+        height: 10%;
+    }
+
+    .option-2{
+        display:flex;
+        flex-direction: row;
+        height: 10%;
+    }
+
+    p{
+        margin:10px;
+    }
+
 
 /* button{
     display:flex;
@@ -175,4 +203,9 @@ form{
 
 h3{
     margin-top: 25px;
+}
+
+.past-poll-container{
+    overflow: auto;
+    height:15vh;
 }

@@ -1,4 +1,5 @@
 import { createPoll, getPolls, redirectIfNotLoggedIn, signOut } from '../fetch-utils.js';
+import { renderPolls } from '../render-utils.js';
 const publishButton = document.querySelector('.publish-poll');
 // const currentContainerEl = document.querySelector('.current-poll-container');
 const currentQuestionEl = document.querySelector('.current-poll-question-text');
@@ -10,7 +11,7 @@ const option1Increment = document.querySelector('.option1-add');
 const option1Decrement = document.querySelector('.option1-subtract');
 const option2Increment = document.querySelector('.option2-add');
 const option2Decrement = document.querySelector('.option2-subtract');
-const pastPollContainer = document.querySelector('past-poll-container');
+const pastPollContainer = document.querySelector('.past-poll-container');
 const signOutButton = document.querySelector('.logout');
 const formEl = document.querySelector('form');
 
@@ -23,6 +24,8 @@ let currentVote1 = 0;
 let currentVote2 = 0;
 
 console.log(currentVote1);
+
+displayCurrentQuestion();
 
 
 redirectIfNotLoggedIn();
@@ -94,16 +97,37 @@ function displayCurrentQuestion(){
     vote2El.textContent = currentVote2;
 
 
+    publishButton.addEventListener('click', async () => {
+        const pastPoll = {
+            question: currentQuestion,
+            option_1: currentOption1,
+            option_2: currentOption2,
+            votes_1: currentVote1,
+            votes_2: currentVote2,
+        };
+    
+        await createPoll(pastPoll);
+        await fetchAndDisplayPolls();
+    
+        currentQuestion = 'Default question';
+        currentOption1 = 'Default Option 1';
+        currentOption2 = 'Default Option 2';
+        currentVote1 = 0;
+        currentVote2 = 0;
+    
+        displayCurrentQuestion();
+    });
 
 
+    async function fetchAndDisplayPolls() {
+        const polls = await getPolls();
+    
+        pastPollContainer.textContent = '';
+        for (let poll of polls) {
+            const pollEl = renderPolls(poll);
+            pastPollContainer.append(pollEl);
 
 
+        }
+    }
 }
-
-
-
-
-
-
-
-
