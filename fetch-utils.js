@@ -11,7 +11,7 @@ export async function createPoll(somePastPoll){
 
         .from('poll_tracker')
         .insert(somePastPoll);
-
+    console.log(response);
     return response.body;
 }
 
@@ -21,8 +21,9 @@ export async function getPolls(){
 
         .from('poll_tracker')
         .select('*');
+        
 
-    return response.body;
+    return checkError(response);
 
 }
 
@@ -33,7 +34,7 @@ export async function signUp(someEmail, somePassword){
         password: somePassword,
     });
 
-    return response.body;
+    return response.user;
 
 
 }
@@ -44,16 +45,17 @@ export async function signIn(someEmail, somePassword){
         email: someEmail,
         password: somePassword,
     });
+console.log(response);
 
-    return response.body;
+    return response.user;
 
 }
 
 export async function getUser(){
 
-    const user = client.auth.user();
+    return client.auth.session();
 
-    return user;
+    // return user;
 }
 
 export async function signOut(){
@@ -63,10 +65,14 @@ export async function signOut(){
 
 export async function redirectIfNotLoggedIn(){
 
-    const user = getUser();
+    const user = await getUser();
 
     if (!user){
         window.location.href = '../';
     }
+}
+
+function checkError({ data, error }) {
+    return error ? console.error(error) : data;
 }
 

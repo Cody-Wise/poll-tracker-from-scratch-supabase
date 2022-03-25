@@ -19,7 +19,7 @@ const formEl = document.querySelector('form');
 
 let currentQuestion = 'Default Question';
 let currentOption1 = 'Default Option1';
-let currentOption2 = 'Default Option 2';
+let currentOption2 = 'Default Option2';
 let currentVote1 = 0;
 let currentVote2 = 0;
 
@@ -96,38 +96,41 @@ function displayCurrentQuestion(){
     vote1El.textContent = currentVote1;
     vote2El.textContent = currentVote2;
 
+}
 
-    publishButton.addEventListener('click', async () => {
-        const pastPoll = {
-            question: currentQuestion,
-            option_1: currentOption1,
-            option_2: currentOption2,
-            votes_1: currentVote1,
-            votes_2: currentVote2,
-        };
+
+publishButton.addEventListener('click', async () => {
+    const pastPoll = {
+        question: currentQuestion,
+        option_1: currentOption1,
+        option_2: currentOption2,
+        votes_1: currentVote1,
+        votes_2: currentVote2,
+    };
     
-        await createPoll(pastPoll);
-        await fetchAndDisplayPolls();
+    const pollsCreate = await createPoll(pastPoll);
+    console.log(pollsCreate);
+    await fetchAndDisplayPolls();
     
-        currentQuestion = 'Default question';
-        currentOption1 = 'Default Option 1';
-        currentOption2 = 'Default Option 2';
-        currentVote1 = 0;
-        currentVote2 = 0;
+    currentQuestion = 'Default question';
+    currentOption1 = 'Default Option 1';
+    currentOption2 = 'Default Option 2';
+    currentVote1 = 0;
+    currentVote2 = 0;
     
-        displayCurrentQuestion();
-    });
+    displayCurrentQuestion();
+});
 
 
-    async function fetchAndDisplayPolls() {
-        const polls = await getPolls();
+async function fetchAndDisplayPolls() {
+    const polls = await getPolls();
     
-        pastPollContainer.textContent = '';
-        for (let poll of polls) {
-            const pollEl = renderPolls(poll);
-            pastPollContainer.append(pollEl);
+    pastPollContainer.textContent = '';
+    for (let poll of polls) {
+        const pollEl = renderPolls(poll);
+        pastPollContainer.append(pollEl);
 
 
-        }
     }
 }
+
