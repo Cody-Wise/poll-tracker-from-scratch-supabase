@@ -45,7 +45,7 @@ export async function signIn(someEmail, somePassword){
         email: someEmail,
         password: somePassword,
     });
-console.log(response);
+    console.log(response);
 
     return response.user;
 

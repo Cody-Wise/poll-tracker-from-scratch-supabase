@@ -108,8 +108,8 @@ publishButton.addEventListener('click', async () => {
         votes_2: currentVote2,
     };
     
-    const pollsCreate = await createPoll(pastPoll);
-    console.log(pollsCreate);
+    await createPoll(pastPoll);
+
     await fetchAndDisplayPolls();
     
     currentQuestion = 'Default question';
@@ -119,6 +119,10 @@ publishButton.addEventListener('click', async () => {
     currentVote2 = 0;
     
     displayCurrentQuestion();
+});
+
+window.addEventListener('load', async () => {
+    await fetchAndDisplayPolls();
 });
 
 
