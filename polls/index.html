@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/home.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <div class="gutter-right logo">
+            
+        </div>
+        <button class="logout">Logout</button>
+    </header>
+    <main>
+        <h2>Welcome to Poll Tracker </h2>
+        <section class="section2">
+            <form>
+                <label>
+                    Question
+                </label>
+                <input name="question">
+                <label>Option 1</label>
+                <input name="option1">
+                <label>Option2</label>
+                <input name="option2">
+                <button id="submit">Launch Poll</button>
+                </form>
+                <h3>Current Poll</h3>
+                <div class="current-poll-container">
+                    <h3 class="current-poll-question-text"></h3>
+                    <p class="option-1-text"></p>
+                    <p class="vote-1-text"></p>
+                    <p class="option-2-text"></p>
+                    <p class="vote-2-text"></p>
+                    <div class="option-1">
+                        <label for="button1">
+                    Option 1
+                    
+                    <button class="option1-add">+</button>
+                    <button class="option1-subtract">-</button></label></div>
+                    <div class="option-2">
+                        <label for="button1">
+                            Option 2
+                    
+                    <button class="option2-add">+</button>
+                    <button class="option2-subtract">-</button></label></div>
+                    <button class="publish-poll">Publish Poll</button>
+                </div>
+                <h3>Past Polls</h3>
+                <div class="past-poll-container">
+
+                </div>
+            
+        </section>
+    </main>
+    <footer>
+        <div class="copy gutter-right">&copy; 2021 Alchemy Code Lab</div>
+    </footer>
+
+    <script type="module" src="./polls.js"></script>
+</body>
+
+</html>
